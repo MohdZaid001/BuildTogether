@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your hackathon team and submit your project pitch.">
+  <title>BuildTogether — Hackathon Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="BuildTogether home">
+      <span class="brand-mark">B</span>
+      <span>BuildTogether</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#home">Overview</a>
+      <a class="nav-link" href="#people">Find people</a>
+      <a class="nav-link" href="#teams">Team openings</a>
+    </nav>
+    <a class="top-action" href="#submit">Submit a pitch <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span>MAKE HACKATHON SUCCESSFULL</p>
+        <h1>Good ideas get<br><span>better together.</span></h1>
+        <p class="hero-text">Find people who complement your skills, build something meaningful, and share your final
+          pitch.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#people">Find your team <span>→</span></a>
+          <a class="text-link" href="#submit">Submit a project</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Abstract illustration of connected people">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-center"><span>BT</span></div>
+        <div class="art-node node-one">JS</div>
+        <div class="art-node node-two">AI</div>
+        <div class="art-node node-three">UX</div>
+        <div class="art-node node-four">+</div>
+      </div>
+    </section>
+
+    <section class="stats section-wrap" aria-label="Hackathon overview">
+      <div class="stat"><strong id="participantCount">8</strong><span>People to meet</span></div>
+      <div class="stat"><strong id="teamCount">4</strong><span>Open teams</span></div>
+      <div class="stat"><strong id="submissionCount">0</strong><span>Projects submitted</span></div>
+      <div class="stat stat-note"><span class="stat-label">Your next step</span><strong>Find your people.</strong></div>
+    </section>
+
+    <section class="content-section section-wrap" id="people">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COMMUNITY</p>
+          <h2>Find your people.</h2>
+          <p class="section-subtitle">A good team starts with the right mix of skills.</p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="peopleSearch" type="search"
+            placeholder="Search people or skills"></label>
+        <select id="skillFilter" aria-label="Filter by skill">
+          <option value="All">All skills</option>
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>AI/ML</option>
+          <option>UI/UX</option>
+          <option>Hardware/IoT</option>
+        </select>
+      </div>
+      <div class="people-grid" id="peopleGrid"></div>
+    </section>
+
+    <section class="content-section section-wrap soft-section" id="teams">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">OPEN POSITIONS</p>
+          <h2>Teams looking for you.</h2>
+          <p class="section-subtitle">Join a team that needs what you do best.</p>
+        </div>
+        <button class="button button-outline" id="openPostModal">＋ Post an opening</button>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <section class="submit-section section-wrap" id="submit">
+      <div class="submit-intro">
+        <p class="eyebrow">THE FINAL PITCH</p>
+        <h2>Made something<br><span>worth sharing?</span></h2>
+        <p>Add your project links and choose the sponsor track that fits your idea.</p>
+        <div class="submission-note"><span class="note-icon">↗</span><span>Your submission is saved in this browser. You
+            can review it below.</span></div>
+      </div>
+      <form class="pitch-form" id="pitchForm">
+        <label>Project title<input name="title" type="text" placeholder="e.g. MediAI" required minlength="2"></label>
+        <label>GitHub repository URL<input name="github" type="url" placeholder="https://github.com/team/project"
+            required></label>
+        <label>Live demo link<input name="demo" type="url" placeholder="https://your-project.com" required></label>
+        <label>Video pitch URL<input name="video" type="url" placeholder="https://youtube.com/..." required></label>
+        <label>Sponsor track
+          <select name="track" required>
+            <option value="">Choose a category</option>
+            <option>Best FinTech Hack</option>
+            <option>Best Healthcare AI</option>
+            <option>Best Open Source Tool</option>
+          </select>
+        </label>
+        <button class="button button-dark submit-button" type="submit">Submit project <span>→</span></button>
+        <p class="form-message" id="formMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="content-section section-wrap submissions-section" id="my-submissions">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR WORK</p>
+          <h2>Project submissions.</h2>
+          <p class="section-subtitle">Projects submitted from this browser appear here.</p>
+        </div>
+      </div>
+      <div id="submissionList" class="submission-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#home"><span class="brand-mark">B</span><span>BuildTogether</span></a>
+    <p>Made for people who love building things.</p>
+    <a href="#home" class="back-top">Back to top ↑</a>
+  </footer>
+
+  <dialog id="postModal" class="modal">
+    <form id="postForm" class="modal-card">
+      <button type="button" class="modal-close" id="closePostModal" aria-label="Close">×</button>
+      <p class="eyebrow">RECRUIT YOUR TEAM</p>
+      <h2>Post an opening.</h2>
+      <label>Team name<input name="team" required placeholder="e.g. Team Orbit"></label>
+      <label>Looking for
+        <select name="skill" required>
+          <option value="">Choose a skill</option>
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>AI/ML</option>
+          <option>UI/UX</option>
+          <option>Hardware/IoT</option>
+        </select>
+      </label>
+      <label>Open positions<input name="vacancies" type="number" min="1" max="5" value="1" required></label>
+      <label>Open positions<input name="members" type="number" min="1" max="5" value="1" required></label>
+      <label>Short description<textarea name="description" rows="3" maxlength="120"
+          placeholder="What are you building?"></textarea></label>
+      <button class="button button-dark submit-button" type="submit">Publish opening →</button>
+      <p class="form-message" id="postMessage" role="status"></p>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
