@@ -112,8 +112,8 @@ function renderSubmissions() {
       <p>${item.track} · Submitted ${item.date}</p>
       <div class="submission-links">
         <a href="${item.github}" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="${item.demo}" target="_blank" rel="noopener">Live demo ↗</a>
-        <a href="${item.video}" target="_blank" rel="noopener">Video pitch ↗</a>
+        ${item.demo ? `<a href="${item.demo}" target="_blank" rel="noopener">Live demo ↗</a>` : ""}
+        ${item.video ? `<a href="${item.video}" target="_blank" rel="noopener">Video pitch ↗</a>` : ""}
         <a href="#" data-delete="${index}">Remove</a>
       </div>`;
     list.appendChild(card);
@@ -131,7 +131,7 @@ document.getElementById("skillFilter").addEventListener("change", renderPeople);
 
 document.getElementById("peopleGrid").addEventListener("click", event => {
   const button = event.target.closest("[data-person]");
-  if (button) showToast("Connection request sent (demo).");
+  if (button) showToast("Connection request sent.");
 });
 
 document.getElementById("teamGrid").addEventListener("click", event => {
@@ -143,7 +143,7 @@ document.getElementById("teamGrid").addEventListener("click", event => {
     saveData();
     renderTeams();
     updateStats();
-    showToast(`You joined ${team.name}! (Demo)`);
+    showToast(`You joined ${team.name}!`);
   }
 });
 
@@ -160,7 +160,7 @@ document.getElementById("postForm").addEventListener("submit", event => {
     name: values.get("team").trim(),
     skill: values.get("skill"),
     vacancies: Number(values.get("vacancies")),
-    total: Number(values.get("vacancies")) + 1,
+    total: Number(values.get("members")) + Number(values.get("vacancies")),
     description: values.get("description").trim()
   };
   teams.unshift(newTeam);

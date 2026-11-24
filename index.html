@@ -101,8 +101,8 @@
         <label>Project title<input name="title" type="text" placeholder="e.g. MediAI" required minlength="2"></label>
         <label>GitHub repository URL<input name="github" type="url" placeholder="https://github.com/team/project"
             required></label>
-        <label>Live demo link<input name="demo" type="url" placeholder="https://your-project.com" required></label>
-        <label>Video pitch URL<input name="video" type="url" placeholder="https://youtube.com/..." required></label>
+        <label>Live demo link (optional)<input name="demo" type="url" placeholder="https://your-project.com"></label>
+        <label>Video pitch URL (optional)<input name="video" type="url" placeholder="https://youtube.com/..."></label>
         <label>Sponsor track
           <select name="track" required>
             <option value="">Choose a category</option>
@@ -151,7 +151,7 @@
         </select>
       </label>
       <label>Open positions<input name="vacancies" type="number" min="1" max="5" value="1" required></label>
-      <label>Open positions<input name="members" type="number" min="1" max="5" value="1" required></label>
+      <label>Current team members<input name="members" type="number" min="1" max="5" value="1" required></label>
       <label>Short description<textarea name="description" rows="3" maxlength="120"
           placeholder="What are you building?"></textarea></label>
       <button class="button button-dark submit-button" type="submit">Publish opening →</button>

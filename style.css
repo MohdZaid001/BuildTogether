@@ -814,12 +814,14 @@ textarea {
 }
 
 @media (max-width: 900px) {
-  .people-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .people-grid,
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .submit-section {
     gap: 45px;
+    grid-template-columns: 1fr 1.2fr;
   }
 
   .main-nav {
@@ -964,5 +966,48 @@ textarea {
   .footer p {
     order: 3;
     width: 100%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .search-box,
+  .toolbar select {
+    width: 100%;
+    max-width: none;
+    min-height: 43px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .stat {
+    min-width: 0;
+  }
+
+  .stat strong {
+    font-size: 22px;
+  }
+
+  .modal-card {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
