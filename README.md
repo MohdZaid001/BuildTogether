@@ -1,6 +1,6 @@
 # BuildTogether — Hackathon Team Matcher
 
-A simple frontend demo for finding teammates, viewing open team positions and submitting a hackathon project pitch.
+A simple website for finding teammates, viewing open team positions and submitting a hackathon project pitch.
 
 ## Features
 - Search participants by name or skill and filter by skill.
